@@ -2,9 +2,12 @@
 
 void lint::_fill(size_t begin, size_t end, uint32_t* arr, uint32_t val)
 {
-    for (size_t pos = begin; pos < end; pos++)
+    uint32_t* larr = arr + begin;
+    uint32_t* rarr = arr + end;
+
+    for (uint32_t* el = larr; el < rarr; el++)
     {
-        arr[pos] = val;
+        (*el) = val;
     }
 }
 
