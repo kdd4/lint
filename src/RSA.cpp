@@ -1,4 +1,4 @@
-#include "RSA.hpp"
+#include "lint/RSA.hpp"
 
 RSA::Key::Key(const lint& A, const lint& B, const lint& minE)
 {

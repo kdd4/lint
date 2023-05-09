@@ -1,4 +1,4 @@
-#include "lint.hpp"
+#include "lint/lint.hpp"
 
 void lint::_fill(size_t begin, size_t end, uint32_t* arr, uint32_t val)
 {

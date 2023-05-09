@@ -82,13 +82,15 @@ public:
 class lint::random
 {
 private:
-    uint32_t randX = 0;
+    uint32_t randX;
 
     const uint64_t a = 6364136223846793005;
     const uint64_t c = 1442695040888963407;
 
 public:
+    random() : randX(0) {};
     random(uint32_t x = 0) : randX(x) {};
+
     void seed(uint32_t x)
     {
         randX = x;
