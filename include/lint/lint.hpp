@@ -88,25 +88,12 @@ private:
     const uint64_t c = 1442695040888963407;
 
 public:
-    random() : randX(0) {};
-    random(uint32_t x = 0) : randX(x) {};
+    random();
+    random(uint32_t x = 0);
 
-    void seed(uint32_t x)
-    {
-        randX = x;
-    }
+    void seed(uint32_t x);
 
-    lint operator()(size_t rand_size)
-    {
-        lint result(0);
-        result._resize(rand_size);
-        for(size_t id = 0; id < rand_size; ++id)
-        {
-            randX = ((uint64_t)a*randX + c) >> 32;
-            result._lvalue[id] = randX;
-        }
-        return result;
-    }
+    lint operator()(size_t rand_size);
 };
 
 class lint::exceptionDivByZero : public std::exception

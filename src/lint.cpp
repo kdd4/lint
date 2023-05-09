@@ -5,7 +5,7 @@ void lint::_fill(size_t begin, size_t end, uint32_t* arr, uint32_t val)
     uint32_t* larr = arr + begin;
     uint32_t* rarr = arr + end;
 
-    for (uint32_t* el = larr; el < rarr; el++)
+    for (uint32_t* el = larr; el < rarr; ++el)
     {
         (*el) = val;
     }
@@ -13,7 +13,7 @@ void lint::_fill(size_t begin, size_t end, uint32_t* arr, uint32_t val)
 
 void lint::_copy(size_t begin, size_t end, uint32_t* arrl, uint32_t* arrr)
 {
-    for (size_t pos = begin; pos < end; pos++)
+    for (size_t pos = begin; pos < end; ++pos)
     {
         arrl[pos] = arrr[pos];
     }
@@ -740,4 +740,24 @@ std::ostream& operator<<(std::ostream& stream, const lint& right)
         stream << "0";
     }
     return stream;
+}
+
+lint::random::random() : randX(0) {};
+lint::random::random(uint32_t x) : randX(x) {};
+
+void lint::random::seed(uint32_t x)
+{
+    randX = x;
+}
+
+lint lint::random::operator()(size_t rand_size)
+{
+    lint result(0);
+    result._resize(rand_size);
+    for(size_t id = 0; id < rand_size; ++id)
+    {
+        randX = ((uint64_t)a*randX + c) >> 32;
+        result._lvalue[id] = randX;
+    }
+    return result;
 }
