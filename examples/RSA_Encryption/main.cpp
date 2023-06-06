@@ -14,18 +14,23 @@ int main()
         lint A(valA, 13);
         lint B(valB, 13);
         RSA::Key key(A, B, 257);
+
+        RSA::openKey pubKey(key);
+        RSA::secretKey secKey(key);
+
         std::cout << "N: " << key.N << "\n";
         std::cout << "e: " << key.E << "\n";
+        std::cout << "d: " << key.D << "\n\n";
 
         lint M(1029384756);
-        std::cout << "M " << M << "\n";
-        M = RSA::encode(M, key);
-        std::cout << "C " << M << "\n";
-        M = RSA::decode(M, key);
-        std::cout << "M " << M << "\n";
+        std::cout << "Message: " << M << "\n";
+        M = RSA::encode(M, pubKey);
+        std::cout << "Encrypted message: " << M << "\n";
+        M = RSA::decode(M, secKey);
+        std::cout << "Decrypted message: " << M << "\n";
 
     } catch(const std::exception& ext) {
-        std::cout << "Exception was catched. Message: " << ext.what() << "\n";
+        std::cout << "Exception was caught. Message: " << ext.what() << "\n";
     }
 
     return 0;
