@@ -1,15 +1,21 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(lint VERSION 1.0.0 LANGUAGES CXX)
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose Release or Debug" FORCE)
 endif()
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Og -Wall -Werror -Wpedantic")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -Werror -Wpedantic")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Og -Wall -Wpedantic")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -Wpedantic")
+
+option(WARMINGS_AS_ERRORS "Warmings cause errors" OFF)
+if(WARMINGS_AS_ERRORS)
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Werror")
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Werror")
+endif()
+
+project(lint VERSION 1.0.0 LANGUAGES CXX)
 
 set(HEADERS "include/lint/lint.hpp" "include/lint/RSA.hpp")
 set(SOURCES "src/lint.cpp" "src/RSA.cpp")
