@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.21)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -6,8 +6,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose Release or Debug" FORCE)
 endif()
-set(CMAKE_CXX_FLAGS_DEBUG "-Og -Wall -Wpedantic")
-set(CMAKE_CXX_FLAGS_RELEASE "-Wall -Wpedantic")
+
+set(CMAKE_CXX_FLAGS "-Wall -Wpedantic")
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 option(WARNINGS_AS_ERRORS "Warmings cause errors" OFF)
 if(WARNINGS_AS_ERRORS)
