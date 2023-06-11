@@ -742,8 +742,8 @@ std::ostream& operator<<(std::ostream& stream, const lint& right)
     return stream;
 }
 
-lint::random::random() : randX(0) {};
-lint::random::random(uint32_t x) : randX(x) {};
+lint::random::random() : randX(0) {}
+lint::random::random(uint32_t x) : randX(x) {}
 
 void lint::random::seed(uint32_t x)
 {

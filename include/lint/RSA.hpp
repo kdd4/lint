@@ -32,6 +32,6 @@ namespace RSA
 
     lint encode(const lint& M, const openKey& key);
     lint decode(const lint& C, const secretKey& key);
-};
+}
 
 #endif // RSA_HPP_INCLUDED
