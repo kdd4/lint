@@ -17,7 +17,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES GNU OR CMAKE_CXX_COMPILER_ID MATCHES Clang)
 	set(CMAKE_CXX_FLAGS_DEBUG "-g")
 	set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
-	option(WARNINGS_AS_ERRORS "Warmings cause errors" OFF)
+	option(WARNINGS_AS_ERRORS "Warnings cause errors" OFF)
 	if(WARNINGS_AS_ERRORS)
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
 	endif()
